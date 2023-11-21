@@ -38,12 +38,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
-
 Route::get('/insertar', [CocheControlador::class, 'showInsertForm'])->name('insertar');
 
 Route::post('/insertar-coche',[CocheControlador::class, 'insertar'])->name('insertar-coche');
 
 Route::get('/verCoches', [CocheControlador::class, 'showCoches'])->name('verCoches');
+
+Route::get('/editar-coche/{id}', [CocheControlador::class, 'showEditForm'])->name('editar-coche');
+Route::patch('/actualizar-coche/{id}', [CocheControlador::class, 'actualizar'])->name('actualizar-coche');
+Route::delete('/eliminar-coche/{id}', [CocheControlador::class, 'eliminar'])->name('eliminar-coche');
+
+
+
+require __DIR__ . '/auth.php';
 
 
